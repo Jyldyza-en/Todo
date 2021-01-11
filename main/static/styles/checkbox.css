@@ -1,0 +1,8 @@
+#raz:checked ~ .todo_item{
+    border: 1px solid red;
+    border-radius: 5px;
+    width: 30%;
+    padding: 10px 15px;
+    background-color: #C8E6C9;
+    margin-bottom: 20px;
+}
