@@ -3,9 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>bookstore</title>
 </head>
 <body>
+    <section>
+        <div class="create_container">
+            <form action="{% url 'add-book' %}" method="POST">
+                {% csrf_token %}
+                <input 
+                    class="create_input" 
+                    type="title" 
+                    placeholder="Title"
+                    name="books_title"
+                />
+                <input 
+                    class="create_input" 
+                    type="subtitle" 
+                    placeholder="Subtitle"
+                    name="books_subtitle"
+                />
+                <input 
+                    class="create_input" 
+                    type="description" 
+                    placeholder="Description"
+                    name="books_description"
+                />
+                <input 
+                    class="create_input" 
+                    type="price" 
+                    placeholder="Price"
+                    name="books_price"
+                />
+                <input 
+                    class="create_input" 
+                    type="genre" 
+                    placeholder="Genre"
+                    name="books_genre"
+                />
+                <input 
+                    class="create_input" 
+                    type="author" 
+                    placeholder="Author"
+                    name="books_author"
+                />
+                <input 
+                    class="create_input" 
+                    type="year" 
+                    placeholder="Year"
+                    name="books_year"
+                />
+                <button class="create_button">Добавить книгу</button>
+            </form>
+        </div>
+    </section>
+
     {% for book in book_list %}
         <h3>{{ book.title }}</h3>
         <h4>{{ book.subtitle }}</h4>
