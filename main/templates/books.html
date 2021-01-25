@@ -1,12 +1,14 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>bookstore</title>
+    <link rel="stylesheet" href="{% static 'styles/book.css' %}" />
 </head>
 <body>
-    <section>
+    <section >
         <div class="create_container">
             <form action="{% url 'add-book' %}" method="POST">
                 {% csrf_token %}
@@ -56,11 +58,33 @@
             </form>
         </div>
     </section>
-
-    {% for book in book_list %}
-        <h3>{{ book.title }}</h3>
-        <h4>{{ book.subtitle }}</h4>
-        <p>{{ book.description }}</p>
-    {% endfor %}
+    <section class="section">
+        {% for book in book_list %}
+        <div class="item">
+            <div class="todo_item_header">
+                <label class="checkbox_container">
+                    <input type="checkbox" id="raz"/>
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <div>
+                <h2>{{ book.title }}</h2>
+                <h4>{{ book.subtitle }}</h4>
+                <p>{{ book.description }}</p>
+            </div>
+            <div class="todo_item_footer">
+                <p>{{ todo.created_at }}</p>
+                <div class="action_buttons">
+                    {% if book.is_favorite %}
+                        <a href="{% url 'unmark-book' book.id %}"><img src="{% static './icons/marked.png' %}" /></a>
+                    {% else %}
+                        <a href="{% url 'mark-book' book.id %}"><img src="{% static './icons/unmarked.png' %}" /></a>
+                    {% endif%}
+                    <a href="{% url 'delete-book' book.id %}"><img src="{% static './icons/delete.png' %}" /></a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
 </body>
 </html>
