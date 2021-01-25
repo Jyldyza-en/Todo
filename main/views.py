@@ -13,7 +13,7 @@ def second(request):
     return render(request, "books.html", {"book_list": book_list})
 
 def third(request):
-    return HttpResponse("This is page test3.")
+    return render(request, "test")
 
 def add(request):
     return render(request, "add.html")
@@ -77,3 +77,7 @@ def unmark_book(request, id):
     book.is_favorite = False
     book.save()
     return redirect(second)
+
+def BooksDetail(request, id):
+    book_object = Bookstore.objects.filter(id=id)
+    return render(request, "books_detail.html", {"book_list": book_object})

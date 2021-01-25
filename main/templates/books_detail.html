@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>detailed</title>
+</head>
+<body>
+    <div>
+        {% for book in book_list %}
+        <h2>{{ book.title }}</h2>
+        <h4>{{ book.subtitle }}</h4>
+        <p>{{ book.description }}</p>
+        <h3>Цена: {{ book.price }} сом</h3>
+        <h3>Жанр: {{ book.genre }}</h3>
+        <h3>Автор: {{ book.author }}</h3>
+        <h3>Выход книги: {{ book.year }}</h3>
+        {% endfor %}
+    </div>
+</body>
+</html>

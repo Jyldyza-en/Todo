@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{% static 'styles/book.css' %}" />
 </head>
 <body>
-    <section >
+    <section class="section">
         <div class="create_container">
             <form action="{% url 'add-book' %}" method="POST">
                 {% csrf_token %}
@@ -57,8 +57,6 @@
                 <button class="create_button">Добавить книгу</button>
             </form>
         </div>
-    </section>
-    <section class="section">
         {% for book in book_list %}
         <div class="item">
             <div class="todo_item_header">
@@ -69,12 +67,12 @@
             </div>
             <div>
                 <h2>{{ book.title }}</h2>
-                <h4>{{ book.subtitle }}</h4>
-                <p>{{ book.description }}</p>
+                <p>{{ book.author }}</p>
+                <h4>{{ book.subtitle }}</h4>                
             </div>
             <div class="todo_item_footer">
-                <p>{{ todo.created_at }}</p>
                 <div class="action_buttons">
+                    <a href="{% url 'detailed-book' book.id %}"><img src="{% static './icons/detailed.png' %}" /></a>
                     {% if book.is_favorite %}
                         <a href="{% url 'unmark-book' book.id %}"><img src="{% static './icons/marked.png' %}" /></a>
                     {% else %}
